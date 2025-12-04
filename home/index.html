@@ -95,12 +95,12 @@
 <body>
     <h2>Quick Links</h2>
     <ul class="links">
-        <li><a href="https://www.x.com/" target="_blank">X</a></li>
-        <li><a href="https://www.reddit.com/" target="_blank">Reddit</a></li>
-        <li><a href="https://www.youtube.com/playlist?list=WL" target="_blank">YT - Watch Later</a></li>
-        <li><a href="https://www.youtube.com/feed/subscriptions" target="_blank">YT - Subscriptions</a></li>
-        <li><a href="https://www.twitch.tv/" target="_blank">Twitch</a></li>
-        <li><a href="http://lab:8080" target="_blank">Lab</a></li>
+        <li><a href="https://www.x.com/">X</a></li>
+        <li><a href="https://www.reddit.com/">Reddit</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=WL">YT - Watch Later</a></li>
+        <li><a href="https://www.youtube.com/feed/subscriptions">YT - Subscriptions</a></li>
+        <li><a href="https://www.twitch.tv/">Twitch</a></li>
+        <li><a href="http://lab:8080">Lab</a></li>
     </ul>
     
     <hr>
@@ -121,7 +121,7 @@
             todos.forEach((todo, i) => {
                 const li = document.createElement('li');
                 const isLink = /^https?:\/\//i.test(todo);
-                const content = isLink ? `<a href="${todo}" target="_blank">${todo}</a>` : todo;
+                const content = isLink ? `<a href="${todo}">${todo}</a>` : todo;
                 li.innerHTML = `<span>${content}</span><button onclick="removeTodo(${i})">×</button>`;
                 list.appendChild(li);
             });
