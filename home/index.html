@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        .links {
+            list-style: none;
+            padding: 0;
+        }
+        .links li {
+            margin: 15px 0;
+        }
+        .links a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #2d2d2d;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: 1px solid #404040;
+        }
+        .links a:hover {
+            background-color: #404040;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #404040;
+            margin: 30px 0;
+        }
+        .todo {
+            margin-top: 20px;
+        }
+        .todo input {
+            width: 100%;
+            padding: 8px;
+            background-color: #2d2d2d;
+            border: 1px solid #404040;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+        .todo button {
+            padding: 8px 15px;
+            background-color: #2d2d2d;
+            border: 1px solid #404040;
+            border-radius: 5px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .todo button:hover {
+            background-color: #404040;
+        }
+        .todo ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        .todo li {
+            width: 100%;
+            padding: 8px;
+            background-color: #2d2d2d;
+            border: 1px solid #404040;
+            border-radius: 5px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .todo li button {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .todo li a {
+            color: #6cb6ff;
+            text-decoration: none;
+        }
+        .todo li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quick Links</h2>
+    <ul class="links">
+        <li><a href="https://www.x.com/" target="_blank">X</a></li>
+        <li><a href="https://www.reddit.com/" target="_blank">Reddit</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=WL" target="_blank">YT - Watch Later</a></li>
+        <li><a href="https://www.youtube.com/feed/subscriptions" target="_blank">YT - Subscriptions</a></li>
+        <li><a href="https://www.twitch.tv/" target="_blank">Twitch</a></li>
+        <li><a href="http://lab:8080" target="_blank">Lab</a></li>
+    </ul>
+    
+    <hr>
+    
+    <div class="todo">
+        <h2>Todo List</h2>
+        <input type="text" id="todoInput" placeholder="Add task or link...">
+        <ul id="todoList"></ul>
+    </div>
+    
+    <script>
+        const list = document.getElementById('todoList');
+        const input = document.getElementById('todoInput');
+        
+        function loadTodos() {
+            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            list.innerHTML = '';
+            todos.forEach((todo, i) => {
+                const li = document.createElement('li');
+                const isLink = /^https?:\/\//i.test(todo);
+                const content = isLink ? `<a href="${todo}" target="_blank">${todo}</a>` : todo;
+                li.innerHTML = `<span>${content}</span><button onclick="removeTodo(${i})">×</button>`;
+                list.appendChild(li);
+            });
+        }
+        
+        function addTodo() {
+            const val = input.value.trim();
+            if (!val) return;
+            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            todos.push(val);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            input.value = '';
+            loadTodos();
+        }
+        
+        function removeTodo(i) {
+            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            todos.splice(i, 1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            loadTodos();
+        }
+        
+        input.addEventListener('keypress', e => e.key === 'Enter' && addTodo());
+        loadTodos();
+    </script>
+</body>
+</html>
