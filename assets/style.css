@@ -128,13 +128,20 @@ body {
 }
 
 html {
+    /* background-color: var(--bg-primary); */
     background-image: url(bg.png);
     background-size: 74vh;
     background-repeat: repeat-x;
 }
 
 body {
-    margin: 42vh 10vmin 10vh 10vmin;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* background: var(--bg-primary); */
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
 }
 
 ::selection {
@@ -169,7 +176,6 @@ h1 {
     font-size: 5em;
     line-height: 120%;
     color: #111111;
-    margin-bottom: 18vmin;
 }
 .photo {
     background-repeat: norepeat;
@@ -275,39 +281,177 @@ a:visited {
     animation-delay: 0.8s;
 }
 
-@media screen and (max-width: 767px) {
-    body {
-        margin: 0;
-    }
-    .maxwidth {
-        margin: 42vh 6% 0 6%;
-    }
-    h1 {
-        font-size: 3.5em;
-    }
-    /* .photo {
-    background-position: center center;
-    height: 140vmin;
-  } */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #111111;
+    --text-secondary: #666666;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --radius: 16px;
+    --radius-sm: 8px;
 }
 
-.button_slide {
-    font-family: "Semibold";
-    font-style: normal;
-    padding: 0.5rem;
-    border: 0.5rem solid #222;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    background: #222;
-    margin: 0.5rem;
-    color: white !important;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.button_slide img {
-    margin-bottom: -10px;
-    margin-top: -10px;
+
+html,
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-size: 16px;
 }
-.button_slide a {
-    color: white !important;
-    text-decoration: none !important;
+
+html {
+    background-image: url(bg.png);
+    background-size: 74vh;
+    background-repeat: repeat-x;
+    background-color: var(--bg-primary);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+::selection {
+    color: #ffffff;
+    background: #111111;
+}
+
+.highlight {
+    background: #000000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Glass Card */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+}
+
+.card {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card h2 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.card strong {
+    color: var(--text-primary);
+}
+
+/* Links Section */
+.links-section {
+    margin-bottom: 2rem;
+}
+
+.links-section h2 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-card:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.link-card img {
+    opacity: 0.8;
+    filter: invert(1);
+}
+
+.link-card span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
     text-align: center;
+    padding-top: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+    
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
 }
