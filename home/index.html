@@ -1,431 +1,667 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Links</title>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: #111111;
-            color: #e0e0e0;
-            min-height: 100vh;
-        }
-        h1 {
-            color: #ffffff;
-        }
-        h2 {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        h3 {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 500;
-            opacity: 0.9;
-        }
-        .links {
-            list-style: none;
-            padding: 0;
-        }
-        .links li {
-            margin: 15px 0;
-        }
-        .links a {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #2d2d2d;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            border: 1px solid #404040;
-        }
-        .links a:hover {
-            background-color: #404040;
-        }
-        hr {
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-            margin: 40px 0;
-        }
-        .todo {
-            margin-top: 0;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .todo h2 {
-            margin-top: 0;
-        }
-        .todo input {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: #ffffff;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .todo input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-        .todo input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-        .todo button {
-            padding: 10px 18px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #ffffff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 13px;
-        }
-        .todo button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-1px);
-        }
-        .todo ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-        .todo li {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-        .todo li:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-        .todo li button {
-            padding: 4px 10px;
-            font-size: 16px;
-            background: rgba(239, 68, 68, 0.1);
-            border-color: rgba(239, 68, 68, 0.2);
-        }
-        .todo li button:hover {
-            background: rgba(239, 68, 68, 0.2);
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-        .todo li a {
-            color: #818cf8;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .todo li a:hover {
-            color: #a5b4fc;
-        }
-        .bookmarks {
-            margin-top: 40px;
-        }
-        .bookmarks h3 {
-            color: #ffffff;
-            margin-top: 35px;
-            margin-bottom: 16px;
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        .bookmarks .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        .bookmarks .service-card {
-            display: block;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .bookmarks .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(168, 85, 247, 0.05));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .bookmarks .service-card:hover::before {
-            opacity: 1;
-        }
-        .bookmarks .service-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        .bookmarks .service-card h4 {
-            color: #e0e0e0;
-            margin: 0;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        .bookmarks .service-card:hover h4 {
-            color: #ffffff;
-        }
-        .bookmarks .service-card .icon-container {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-        .bookmarks .service-card:hover .icon-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        .bookmarks h2 {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .bookmarks h2 span {
-            font-size: 13px;
-            cursor: pointer;
-            user-select: none;
-            padding: 6px 14px;
-            border-radius: 8px;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-            color: #a5b4fc;
-        }
-        .bookmarks h2 span:hover {
-            background: rgba(99, 102, 241, 0.25);
-            border-color: rgba(99, 102, 241, 0.4);
-            transform: translateY(-1px);
-        }
-        .bookmarks h2 span.toggled {
-            text-decoration: line-through;
-            opacity: 0.5;
-            background: rgba(239, 68, 68, 0.15);
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
-        }
-        @media (max-width: 640px) {
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quick Links</title>
+        <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    "Helvetica Neue", Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 40px 20px;
+                background: #111111;
+                color: #e0e0e0;
+                min-height: 100vh;
+            }
+            h1 {
+                color: #ffffff;
+            }
+            h2 {
+                color: #ffffff;
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            h3 {
+                color: #ffffff;
+                font-size: 16px;
+                font-weight: 500;
+                opacity: 0.9;
+            }
+            .links {
+                list-style: none;
+                padding: 0;
+            }
+            .links li {
+                margin: 15px 0;
+            }
+            .links a {
+                display: inline-block;
+                padding: 10px 15px;
+                background-color: #2d2d2d;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                border: 1px solid #404040;
+            }
+            .links a:hover {
+                background-color: #404040;
+            }
+            hr {
+                border: none;
+                height: 1px;
+                background: linear-gradient(
+                    to right,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent
+                );
+                margin: 40px 0;
+            }
+            .todo {
+                margin-top: 0;
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(10px);
+                border-radius: 16px;
+                padding: 24px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .todo h2 {
+                margin-top: 0;
+            }
+            .todo input {
+                width: 100%;
+                padding: 12px 16px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                color: #ffffff;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+            .todo input:focus {
+                outline: none;
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(99, 102, 241, 0.5);
+                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            }
+            .todo input::placeholder {
+                color: rgba(255, 255, 255, 0.4);
+            }
+            .todo button {
+                padding: 10px 18px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                color: #ffffff;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 13px;
+            }
+            .todo button:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-1px);
+            }
+            .todo ul {
+                list-style: none;
+                padding: 0;
+                margin-top: 20px;
+            }
+            .todo li {
+                width: 100%;
+                padding: 12px 16px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 10px;
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.2s ease;
+            }
+            .todo li:hover {
+                background: rgba(255, 255, 255, 0.06);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+            .todo li button {
+                padding: 4px 10px;
+                font-size: 16px;
+                background: rgba(239, 68, 68, 0.1);
+                border-color: rgba(239, 68, 68, 0.2);
+            }
+            .todo li button:hover {
+                background: rgba(239, 68, 68, 0.2);
+                border-color: rgba(239, 68, 68, 0.3);
+            }
+            .todo li a {
+                color: #818cf8;
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+            .todo li a:hover {
+                color: #a5b4fc;
+            }
+            .bookmarks {
+                margin-top: 40px;
+            }
+            .bookmarks h3 {
+                color: #ffffff;
+                margin-top: 35px;
+                margin-bottom: 16px;
+                font-size: 16px;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            }
             .bookmarks .service-grid {
-                grid-template-columns: repeat(2, 1fr);
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px;
+                margin-bottom: 20px;
             }
-        }
-        @media (max-width: 480px) {
-            .bookmarks .service-grid {
-                grid-template-columns: 1fr;
+            .bookmarks .service-card {
+                display: block;
+                padding: 8px 12px;
+                background: rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                text-decoration: none;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
             }
-        }
-    </style>
-</head>
-<body>
-    <div class="todo">
-        <h2>Todo List</h2>
-        <input type="text" id="todoInput" placeholder="Add task or link...">
-        <ul id="todoList"></ul>
-    </div>
-    
-    <hr>
-    
-    <div class="bookmarks">
-        <h2>Bookmarks <span id="labToggle" onclick="toggleLab()">✔︎ vpn</span></h2>
-        
-        <!-- All bookmark sections will be inserted here dynamically -->
-        <div id="allBookmarks"></div>
-    </div>
-    
-    <script>
-        // Bookmark services data with icons
-        const bookmarkServices = {
-            'Quick Links': [
-                { name: 'Gemini', url: 'https://gemini.google.com/', icon: 'simple-icons:google', color: '#4285f4' },
-                { name: 'ChatGPT', url: 'https://chat.openai.com/', icon: 'simple-icons:openai', color: '#10a37f' },
-                { name: 'X', url: 'https://www.x.com/', icon: 'mdi:twitter', color: '#1da1f2' },
-                { name: 'Discord', url: 'https://discord.com/channels/@me', icon: 'simple-icons:discord', color: '#5865f2' },
-                { name: 'Reddit', url: 'https://www.reddit.com/', icon: 'simple-icons:reddit', color: '#ff4500' },
-                { name: 'Notion', url: 'https://www.notion.so/', icon: 'simple-icons:notion', color: '#ffffff' },
-                { name: 'Twitch', url: 'https://www.twitch.tv/', icon: 'simple-icons:twitch', color: '#9146ff' },
-                { name: 'YT - Subs', url: 'https://www.youtube.com/feed/subscriptions', icon: 'simple-icons:youtube', color: '#ff0000' },
-                { name: 'YT - Watch Later', url: 'https://www.youtube.com/playlist?list=WL', icon: 'simple-icons:youtube', color: '#ff0000' },
-            ],
-            'Services': [
-                { name: 'Jellyfin', url: 'http://lab:8096/', icon: 'simple-icons:jellyfin', color: '#8665ab' },
-                { name: 'Telegram', url: 'http://lab:8090/', icon: 'simple-icons:telegram', color: '#0088cc' },
-                { name: 'ownCloud', url: 'http://lab:8888/', icon: 'simple-icons:owncloud', color: '#eee' },
-                { name: 'MeTube', url: 'http://lab:8095/', icon: 'simple-icons:youtube', color: '#ff0000' },
-                { name: 'Immich', url: 'http://lab:2283/', icon: 'mdi:image-multiple', color: '#ff00ff' },
-                { name: 'Booklore', url: 'http://lab:6060/', icon: 'mdi:book-open-page-variant', color: '#8b4513' },
-                { name: 'Ephemera', url: 'http://lab:8286/', icon: 'mdi:archive-arrow-down', color: '#2e7d32' },
-                { name: 'Karakeep', url: 'http://lab:3000/', icon: 'mdi:bookmark-outline', color: '#4a90e2' },
-                { name: 'VERT', url: 'http://lab:5173/', icon: 'mdi:file-swap', color: '#ff5722' },
-                { name: 'Windows', url: 'http://lab:8006/', icon: 'mdi:microsoft-windows', color: '#0078d7' },
-                { name: 'Docuseal', url: 'http://lab:3200/', icon: 'mdi:file-sign', color: '#3949ab' },
-                { name: 'bentoPDF', url: 'http://lab:8999/', icon: 'mdi:file-pdf-box', color: '#e53935' },
-                { name: 'Super Productivity', url: 'http://lab:8765/', icon: 'mdi:check-circle', color: '#00bcd4' },
-                { name: 'Sure', url: 'http://lab:3080/', icon: 'mdi:finance', color: '#ff4081' },
-                { name: 'Spooty', url: 'http://lab:3333/', icon: 'mdi:music-note', color: '#1db954' },
-                { name: 'Pairdrop', url: 'http://lab:3388/', icon: 'mdi:share-variant', color: '#00bcd4' },
-            ],
-            'Dev': [
-                { name: 'Ollama', url: 'http://lab:11434/', icon: 'simple-icons:ollama', color: '#000000' },
-                { name: 'Chat-Ollama', url: 'http://lab:3001/', icon: 'mdi:chat', color: '#ffffff' },
-                { name: 'n8n', url: 'http://lab:5678/', icon: 'simple-icons:n8n', color: '#ea4b71' },
-                { name: 'It-Tools', url: 'http://lab:3110/', icon: 'mdi:tools', color: '#616161' },
-                { name: 'Jsoncrack', url: 'http://lab:3111/', icon: 'mdi:code-json', color: '#ff9800' },
-                { name: 'DrawDB', url: 'http://lab:5174/', icon: 'mdi:vector-difference', color: '#00bcd4' },
-                { name: 'Termix', url: 'http://lab:8083/', icon: 'mdi:terminal', color: '#4caf50' },
-                { name: 'DockerComposeMaker', url: 'http://lab:7576/', icon: 'mdi:docker', color: '#6c5ce7' },
-                { name: 'ZeroByte', url: 'http://lab:4096/', icon: 'mdi:backup-restore', color: '#9c0000' },
-                { name: 'PruneMate', url: 'http://lab:7676/', icon: 'mdi:broom', color: '#6c5ce7' },
-                { name: 'AdGuard Home', url: 'http://lab:3009/', icon: 'simple-icons:adguard', color: '#ff5722' }
-            ],
-            'Monitoring': [
-                { name: 'Portainer', url: 'http://lab:81/', icon: 'simple-icons:portainer', color: '#0a71c5' },
-                { name: 'Arcane', url: 'http://lab:3552/', icon: 'mdi:chart-box-outline', color: '#ff6f00' },
-                { name: 'Beszel', url: 'http://lab:82/', icon: 'mdi:monitor-dashboard', color: '#00b894' },
-                { name: 'WUD', url: 'http://lab:3100/', icon: 'mdi:docker', color: '#0984e3' },
-                { name: 'Home Assistant', url: 'http://lab:8123/', icon: 'simple-icons:homeassistant', color: '#41bdf5' },
-            ]
-        };
-        
-        // Toggle Lab URLs
-        function toggleLab() {
-            const toggled = localStorage.getItem('labToggled') === 'true';
-            localStorage.setItem('labToggled', !toggled);
-            updateLabToggleUI();
-            loadBookmarks();
-        }
-        
-        function updateLabToggleUI() {
-            const toggled = localStorage.getItem('labToggled') === 'true';
-            const span = document.getElementById('labToggle');
-            if (toggled) {
-                span.classList.add('toggled');
-            } else {
-                span.classList.remove('toggled');
+            .bookmarks .service-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(99, 102, 241, 0.05),
+                    rgba(168, 85, 247, 0.05)
+                );
+                opacity: 0;
+                transition: opacity 0.3s ease;
             }
-        }
-        
-        function getServiceUrl(url) {
-            const toggled = localStorage.getItem('labToggled') === 'true';
-            if (toggled && url.startsWith('http://lab')) {
-                return url.replace('http://lab', 'http://192.168.0.93');
+            .bookmarks .service-card:hover::before {
+                opacity: 1;
             }
-            return url;
-        }
-        
-        // Load dynamic bookmarks
-        function loadBookmarks() {
-            const container = document.getElementById('allBookmarks');
-            let html = '';
-            
-            for (const [category, services] of Object.entries(bookmarkServices)) {
-                html += `<h3>${category}</h3>`;
-                html += '<div class="service-grid">';
-                
-                services.forEach(service => {
-                    const url = getServiceUrl(service.url);
-                    const icon = service.icon 
-                        ? `<span class="icon-container"><span class="iconify" data-icon="${service.icon}" data-width="16" style="color: ${service.color}"></span></span>` 
-                        : '';
-                    html += `
+            .bookmarks .service-card:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.15);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            .bookmarks .service-card h4 {
+                color: #e0e0e0;
+                margin: 0;
+                font-size: 14px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                position: relative;
+                z-index: 1;
+            }
+            .bookmarks .service-card:hover h4 {
+                color: #ffffff;
+            }
+            .bookmarks .service-card .icon-container {
+                width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 6px;
+                flex-shrink: 0;
+                transition: all 0.3s ease;
+            }
+            .bookmarks .service-card:hover .icon-container {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
+                transform: scale(1.1);
+            }
+            .bookmarks h2 {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            .bookmarks h2 span {
+                font-size: 13px;
+                cursor: pointer;
+                user-select: none;
+                padding: 6px 14px;
+                border-radius: 8px;
+                background: rgba(99, 102, 241, 0.15);
+                border: 1px solid rgba(99, 102, 241, 0.3);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                font-weight: 500;
+                color: #a5b4fc;
+            }
+            .bookmarks h2 span:hover {
+                background: rgba(99, 102, 241, 0.25);
+                border-color: rgba(99, 102, 241, 0.4);
+                transform: translateY(-1px);
+            }
+            .bookmarks h2 span.toggled {
+                text-decoration: line-through;
+                opacity: 0.5;
+                background: rgba(239, 68, 68, 0.15);
+                border-color: rgba(239, 68, 68, 0.3);
+                color: #fca5a5;
+            }
+            @media (max-width: 640px) {
+                .bookmarks .service-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 480px) {
+                .bookmarks .service-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="todo">
+            <h2>Todo List</h2>
+            <input
+                type="text"
+                id="todoInput"
+                placeholder="Add task or link..."
+            />
+            <ul id="todoList"></ul>
+        </div>
+
+        <hr />
+
+        <div class="bookmarks">
+            <h2>
+                Bookmarks
+                <span id="labToggle" onclick="toggleLab()">✔︎ vpn</span>
+            </h2>
+
+            <!-- All bookmark sections will be inserted here dynamically -->
+            <div id="allBookmarks"></div>
+        </div>
+
+        <script>
+            // Bookmark services data with icons
+            const bookmarkServices = {
+                "Quick Links": [
+                    {
+                        name: "Gemini",
+                        url: "https://gemini.google.com/",
+                        icon: "simple-icons:google",
+                        color: "#4285f4",
+                    },
+                    {
+                        name: "ChatGPT",
+                        url: "https://chat.openai.com/",
+                        icon: "simple-icons:openai",
+                        color: "#10a37f",
+                    },
+                    {
+                        name: "X",
+                        url: "https://www.x.com/",
+                        icon: "mdi:twitter",
+                        color: "#1da1f2",
+                    },
+                    {
+                        name: "Discord",
+                        url: "https://discord.com/channels/@me",
+                        icon: "simple-icons:discord",
+                        color: "#5865f2",
+                    },
+                    {
+                        name: "Reddit",
+                        url: "https://www.reddit.com/",
+                        icon: "simple-icons:reddit",
+                        color: "#ff4500",
+                    },
+                    {
+                        name: "Notion",
+                        url: "https://www.notion.so/",
+                        icon: "simple-icons:notion",
+                        color: "#ffffff",
+                    },
+                    {
+                        name: "Twitch",
+                        url: "https://www.twitch.tv/",
+                        icon: "simple-icons:twitch",
+                        color: "#9146ff",
+                    },
+                    {
+                        name: "YT - Subs",
+                        url: "https://www.youtube.com/feed/subscriptions",
+                        icon: "simple-icons:youtube",
+                        color: "#ff0000",
+                    },
+                    {
+                        name: "YT - Watch Later",
+                        url: "https://www.youtube.com/playlist?list=WL",
+                        icon: "simple-icons:youtube",
+                        color: "#ff0000",
+                    },
+                ],
+                Services: [
+                    {
+                        name: "Jellyfin",
+                        url: "http://lab:8096/",
+                        icon: "simple-icons:jellyfin",
+                        color: "#8665ab",
+                    },
+                    {
+                        name: "Telegram",
+                        url: "http://lab:8090/",
+                        icon: "simple-icons:telegram",
+                        color: "#0088cc",
+                    },
+                    {
+                        name: "ownCloud",
+                        url: "http://lab:8888/",
+                        icon: "simple-icons:owncloud",
+                        color: "#eee",
+                    },
+                    {
+                        name: "MeTube",
+                        url: "http://lab:8095/",
+                        icon: "simple-icons:youtube",
+                        color: "#ff0000",
+                    },
+                    {
+                        name: "Immich",
+                        url: "http://lab:2283/",
+                        icon: "mdi:image-multiple",
+                        color: "#ff00ff",
+                    },
+                    {
+                        name: "Booklore",
+                        url: "http://lab:6060/",
+                        icon: "mdi:book-open-page-variant",
+                        color: "#8b4513",
+                    },
+                    {
+                        name: "Ephemera",
+                        url: "http://lab:8286/",
+                        icon: "mdi:archive-arrow-down",
+                        color: "#2e7d32",
+                    },
+                    {
+                        name: "Karakeep",
+                        url: "http://lab:3000/",
+                        icon: "mdi:bookmark-outline",
+                        color: "#4a90e2",
+                    },
+                    {
+                        name: "VERT",
+                        url: "http://lab:5173/",
+                        icon: "mdi:file-swap",
+                        color: "#ff5722",
+                    },
+                    {
+                        name: "Windows",
+                        url: "http://lab:8006/",
+                        icon: "mdi:microsoft-windows",
+                        color: "#0078d7",
+                    },
+                    {
+                        name: "Docuseal",
+                        url: "http://lab:3200/",
+                        icon: "mdi:file-sign",
+                        color: "#3949ab",
+                    },
+                    {
+                        name: "bentoPDF",
+                        url: "http://lab:8999/",
+                        icon: "mdi:file-pdf-box",
+                        color: "#e53935",
+                    },
+                    {
+                        name: "Super Productivity",
+                        url: "http://lab:8765/",
+                        icon: "mdi:check-circle",
+                        color: "#00bcd4",
+                    },
+                    {
+                        name: "Sure",
+                        url: "http://lab:3080/",
+                        icon: "mdi:finance",
+                        color: "#ff4081",
+                    },
+                    {
+                        name: "Spooty",
+                        url: "http://lab:3333/",
+                        icon: "mdi:music-note",
+                        color: "#1db954",
+                    },
+                    {
+                        name: "Pairdrop",
+                        url: "http://lab:3388/",
+                        icon: "mdi:share-variant",
+                        color: "#00bcd4",
+                    },
+                    {
+                        name: "Music Downloader",
+                        url: "http://lab:8001/",
+                        icon: "simple-icons:spotify",
+                        color: "#1db954",
+                    }
+                ],
+                Dev: [
+                    {
+                        name: "Ollama",
+                        url: "http://lab:11434/",
+                        icon: "simple-icons:ollama",
+                        color: "#000000",
+                    },
+                    {
+                        name: "Chat-Ollama",
+                        url: "http://lab:3001/",
+                        icon: "mdi:chat",
+                        color: "#ffffff",
+                    },
+                    {
+                        name: "n8n",
+                        url: "http://lab:5678/",
+                        icon: "simple-icons:n8n",
+                        color: "#ea4b71",
+                    },
+                    {
+                        name: "It-Tools",
+                        url: "http://lab:3110/",
+                        icon: "mdi:tools",
+                        color: "#616161",
+                    },
+                    {
+                        name: "Jsoncrack",
+                        url: "http://lab:3111/",
+                        icon: "mdi:code-json",
+                        color: "#ff9800",
+                    },
+                    {
+                        name: "DrawDB",
+                        url: "http://lab:5174/",
+                        icon: "mdi:vector-difference",
+                        color: "#00bcd4",
+                    },
+                    {
+                        name: "Termix",
+                        url: "http://lab:8083/",
+                        icon: "mdi:terminal",
+                        color: "#4caf50",
+                    },
+                    {
+                        name: "DockerComposeMaker",
+                        url: "http://lab:7576/",
+                        icon: "mdi:docker",
+                        color: "#6c5ce7",
+                    },
+                    {
+                        name: "ZeroByte",
+                        url: "http://lab:4096/",
+                        icon: "mdi:backup-restore",
+                        color: "#9c0000",
+                    },
+                    {
+                        name: "PruneMate",
+                        url: "http://lab:7676/",
+                        icon: "mdi:broom",
+                        color: "#6c5ce7",
+                    },
+                    {
+                        name: "AdGuard Home",
+                        url: "http://lab:3009/",
+                        icon: "simple-icons:adguard",
+                        color: "#ff5722",
+                    },
+                ],
+                Monitoring: [
+                    {
+                        name: "Portainer",
+                        url: "http://lab:81/",
+                        icon: "simple-icons:portainer",
+                        color: "#0a71c5",
+                    },
+                    {
+                        name: "Arcane",
+                        url: "http://lab:3552/",
+                        icon: "mdi:chart-box-outline",
+                        color: "#ff6f00",
+                    },
+                    {
+                        name: "Beszel",
+                        url: "http://lab:82/",
+                        icon: "mdi:monitor-dashboard",
+                        color: "#00b894",
+                    },
+                    {
+                        name: "WUD",
+                        url: "http://lab:3100/",
+                        icon: "mdi:docker",
+                        color: "#0984e3",
+                    },
+                    {
+                        name: "Home Assistant",
+                        url: "http://lab:8123/",
+                        icon: "simple-icons:homeassistant",
+                        color: "#41bdf5",
+                    },
+                ],
+            };
+
+            // Toggle Lab URLs
+            function toggleLab() {
+                const toggled = localStorage.getItem("labToggled") === "true";
+                localStorage.setItem("labToggled", !toggled);
+                updateLabToggleUI();
+                loadBookmarks();
+            }
+
+            function updateLabToggleUI() {
+                const toggled = localStorage.getItem("labToggled") === "true";
+                const span = document.getElementById("labToggle");
+                if (toggled) {
+                    span.classList.add("toggled");
+                } else {
+                    span.classList.remove("toggled");
+                }
+            }
+
+            function getServiceUrl(url) {
+                const toggled = localStorage.getItem("labToggled") === "true";
+                if (toggled && url.startsWith("http://lab")) {
+                    return url.replace("http://lab", "http://192.168.0.93");
+                }
+                return url;
+            }
+
+            // Load dynamic bookmarks
+            function loadBookmarks() {
+                const container = document.getElementById("allBookmarks");
+                let html = "";
+
+                for (const [category, services] of Object.entries(
+                    bookmarkServices,
+                )) {
+                    html += `<h3>${category}</h3>`;
+                    html += '<div class="service-grid">';
+
+                    services.forEach((service) => {
+                        const url = getServiceUrl(service.url);
+                        const icon = service.icon
+                            ? `<span class="icon-container"><span class="iconify" data-icon="${service.icon}" data-width="16" style="color: ${service.color}"></span></span>`
+                            : "";
+                        html += `
                         <a href="${url}" class="service-card" target="_self">
                             <h4>${icon}${service.name}</h4>
                         </a>
                     `;
-                });
-                
-                html += '</div>';
+                    });
+
+                    html += "</div>";
+                }
+
+                container.innerHTML = html;
             }
-            
-            container.innerHTML = html;
-        }
-        
-        // Todo list functionality
-        const list = document.getElementById('todoList');
-        const input = document.getElementById('todoInput');
-        
-        function loadTodos() {
-            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
-            list.innerHTML = '';
-            todos.forEach((todo, i) => {
-                const li = document.createElement('li');
-                const isLink = /^https?:\/\//i.test(todo);
-                const content = isLink ? `<a href="${todo}">${todo}</a>` : todo;
-                li.innerHTML = `<span>${content}</span><button onclick="removeTodo(${i})">×</button>`;
-                list.appendChild(li);
-            });
-        }
-        
-        function addTodo() {
-            const val = input.value.trim();
-            if (!val) return;
-            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
-            todos.push(val);
-            localStorage.setItem('todos', JSON.stringify(todos));
-            input.value = '';
+
+            // Todo list functionality
+            const list = document.getElementById("todoList");
+            const input = document.getElementById("todoInput");
+
+            function loadTodos() {
+                const todos = JSON.parse(localStorage.getItem("todos") || "[]");
+                list.innerHTML = "";
+                todos.forEach((todo, i) => {
+                    const li = document.createElement("li");
+                    const isLink = /^https?:\/\//i.test(todo);
+                    const content = isLink
+                        ? `<a href="${todo}">${todo}</a>`
+                        : todo;
+                    li.innerHTML = `<span>${content}</span><button onclick="removeTodo(${i})">×</button>`;
+                    list.appendChild(li);
+                });
+            }
+
+            function addTodo() {
+                const val = input.value.trim();
+                if (!val) return;
+                const todos = JSON.parse(localStorage.getItem("todos") || "[]");
+                todos.push(val);
+                localStorage.setItem("todos", JSON.stringify(todos));
+                input.value = "";
+                loadTodos();
+            }
+
+            function removeTodo(i) {
+                const todos = JSON.parse(localStorage.getItem("todos") || "[]");
+                todos.splice(i, 1);
+                localStorage.setItem("todos", JSON.stringify(todos));
+                loadTodos();
+            }
+
+            input.addEventListener(
+                "keypress",
+                (e) => e.key === "Enter" && addTodo(),
+            );
+
+            // Initialize
             loadTodos();
-        }
-        
-        function removeTodo(i) {
-            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
-            todos.splice(i, 1);
-            localStorage.setItem('todos', JSON.stringify(todos));
-            loadTodos();
-        }
-        
-        input.addEventListener('keypress', e => e.key === 'Enter' && addTodo());
-        
-        // Initialize
-        loadTodos();
-        updateLabToggleUI();
-        loadBookmarks();
-    </script>
-</body>
+            updateLabToggleUI();
+            loadBookmarks();
+        </script>
+    </body>
 </html>
