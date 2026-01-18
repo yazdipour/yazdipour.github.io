@@ -413,9 +413,10 @@ body {
     transform: translateY(-2px);
 }
 
-.link-card img {
+.link-card .iconify {
+    font-size: 24px;
     opacity: 0.8;
-    filter: invert(1);
+    color: var(--text-primary);
 }
 
 .link-card span {
