@@ -771,12 +771,27 @@
         }
       }
 
+      function applyCachedStatuses() {
+        document.querySelectorAll(".service-card").forEach((card) => {
+          const url = card.getAttribute("href");
+          const dot = card.querySelector(".status-dot");
+          if (!dot || !url) return;
+          if (!url.startsWith("http://lab") && !url.startsWith("http://192.168.")) {
+            applyDot(dot, "up");
+            return;
+          }
+          const cached = getCachedStatus(url);
+          if (cached) applyDot(dot, cached);
+        });
+      }
+
       // Initialize
       loadTodos();
       updateLabToggleUI();
       loadBookmarks();
 
-      // Start health checks after 5 seconds, low priority
+      // Apply cached statuses immediately, then fetch stale/missing after 5 seconds
+      applyCachedStatuses();
       setTimeout(() => {
         healthChecksActive = true;
         scheduleHealthChecks();
