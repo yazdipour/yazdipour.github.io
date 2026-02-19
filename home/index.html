@@ -241,6 +241,28 @@
         border-color: rgba(255, 255, 255, 0.2);
         transform: scale(1.1);
       }
+      .status-dot {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #4a4a4a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        z-index: 1;
+      }
+      .status-dot.up {
+        background-color: #4caf50;
+        box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+        border-color: rgba(76, 175, 80, 0.3);
+      }
+      .status-dot.down {
+        background-color: #ef4444;
+        box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
       .bookmarks h2 {
         display: flex;
         align-items: center;
@@ -610,6 +632,7 @@
               : "";
             html += `
                         <a href="${url}" class="service-card" target="_self">
+                            <span class="status-dot"></span>
                             <h4>${icon}${service.name}</h4>
                         </a>
                     `;
@@ -619,6 +642,9 @@
         }
 
         container.innerHTML = html;
+        if (healthChecksActive) {
+          scheduleHealthChecks();
+        }
       }
 
       // Todo list functionality
@@ -656,10 +682,105 @@
 
       input.addEventListener("keypress", (e) => e.key === "Enter" && addTodo());
 
+      // Service health checks
+      let healthChecksActive = false;
+      let checkGeneration = 0;
+      const STATUS_CACHE_KEY = "serviceStatusCache";
+      const STATUS_TTL = 15 * 60 * 1000; // 15 minutes
+
+      function getStatusCache() {
+        try {
+          return JSON.parse(localStorage.getItem(STATUS_CACHE_KEY) || "{}");
+        } catch {
+          return {};
+        }
+      }
+
+      function setStatusCache(url, status) {
+        const cache = getStatusCache();
+        cache[url] = { status, ts: Date.now() };
+        localStorage.setItem(STATUS_CACHE_KEY, JSON.stringify(cache));
+      }
+
+      function getCachedStatus(url) {
+        const entry = getStatusCache()[url];
+        if (!entry) return null;
+        if (Date.now() - entry.ts > STATUS_TTL) return null;
+        return entry.status; // "up" or "down"
+      }
+
+      function applyDot(dot, status) {
+        dot.classList.remove("up", "down");
+        dot.classList.add(status);
+      }
+
+      function checkService(card) {
+        const url = card.getAttribute("href");
+        const dot = card.querySelector(".status-dot");
+        if (!dot || !url) return;
+
+        // Public HTTPS services are assumed always up
+        if (!url.startsWith("http://lab") && !url.startsWith("http://192.168.")) {
+          applyDot(dot, "up");
+          return;
+        }
+
+        // Use cache if still fresh
+        const cached = getCachedStatus(url);
+        if (cached) {
+          applyDot(dot, cached);
+          return;
+        }
+
+        fetch(url, {
+          mode: "no-cors",
+          cache: "no-cache",
+          signal: AbortSignal.timeout(8000),
+        })
+          .then(() => {
+            applyDot(dot, "up");
+            setStatusCache(url, "up");
+          })
+          .catch(() => {
+            applyDot(dot, "down");
+            setStatusCache(url, "down");
+          });
+      }
+
+      function scheduleHealthChecks() {
+        const cards = Array.from(document.querySelectorAll(".service-card"));
+        const generation = ++checkGeneration;
+        let index = 0;
+
+        function checkNext() {
+          if (index >= cards.length || generation !== checkGeneration) return;
+          checkService(cards[index++]);
+          setTimeout(() => {
+            if (window.requestIdleCallback) {
+              requestIdleCallback(checkNext, { timeout: 30000 });
+            } else {
+              checkNext();
+            }
+          }, 200);
+        }
+
+        if (window.requestIdleCallback) {
+          requestIdleCallback(checkNext, { timeout: 10000 });
+        } else {
+          setTimeout(checkNext, 0);
+        }
+      }
+
       // Initialize
       loadTodos();
       updateLabToggleUI();
       loadBookmarks();
+
+      // Start health checks after 5 seconds, low priority
+      setTimeout(() => {
+        healthChecksActive = true;
+        scheduleHealthChecks();
+      }, 5000);
     </script>
   </body>
 </html>
