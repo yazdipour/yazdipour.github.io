@@ -5,117 +5,330 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pay Shahriar</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #000000 0%, #525252 50%, #000000 100%);
+            padding: 20px;
+            background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(80, 80, 80, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(60, 60, 60, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
         .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 44px 40px;
+            border-radius: 24px;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.04);
             text-align: center;
-            max-width: 400px;
-            width: 90%;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #444 0%, #222 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(255,255,255,0.1);
         }
 
         h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.2em;
+            color: #f0f0f0;
+            margin: 0 0 6px;
+            font-size: 1.7em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .subtitle {
             color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+            margin: 0 0 36px;
+            font-size: 0.95em;
+            font-weight: 400;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0 24px;
+            color: #444;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.07);
         }
 
         .payment-buttons {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
         }
 
         .payment-btn {
-            display: inline-block;
-            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
             border: none;
             cursor: pointer;
-            text-align: center;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .payment-btn:active {
+            transform: translateY(0);
         }
 
         .paypal-btn {
-            background-color: #0070ba;
-            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #d0d0d0;
+            box-shadow: 0 4px 20px rgba(0, 112, 186, 0.2);
         }
 
         .paypal-btn:hover {
-            background-color: #005ea6;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 112, 186, 0.3);
+            background: rgba(0, 112, 186, 0.1);
+            border-color: rgba(0, 112, 186, 0.3);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(0, 112, 186, 0.45);
         }
 
         .coffee-btn {
-            background-color: #ffdd00;
-            color: #333;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #d0d0d0;
+            box-shadow: 0 4px 20px rgba(180, 90, 20, 0.2);
         }
 
         .coffee-btn:hover {
-            background-color: #e6c700;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 221, 0, 0.3);
+            background: rgba(180, 90, 20, 0.1);
+            border-color: rgba(200, 110, 30, 0.3);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(180, 90, 20, 0.45);
         }
 
-        .icon {
-            margin-right: 10px;
-            font-size: 1.2em;
+        .btn-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .crypto-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: left;
+            margin-top: 4px;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .crypto-card:hover {
+            border-color: rgba(255, 200, 0, 0.25);
+            box-shadow: 0 8px 32px rgba(255, 200, 0, 0.2);
+        }
+
+        .crypto-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .crypto-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #e0e0e0;
+            font-size: 0.9em;
+        }
+
+        .crypto-badge {
+            font-size: 0.7em;
+            color: #888;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 2px 7px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        .crypto-address-wrap {
+            position: relative;
+        }
+
+        .crypto-address {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 9px 38px 9px 11px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.75em;
+            color: #aaa;
+            word-break: break-all;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+            user-select: all;
+        }
+
+        .crypto-address:hover {
+            border-color: rgba(255,255,255,0.2);
+            color: #ccc;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #555;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+            font-size: 0.9em;
+        }
+
+        .copy-btn:hover {
+            color: #ccc;
+        }
+
+        .copy-toast {
+            display: none;
+            font-size: 0.72em;
+            color: #6bcf7f;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .copy-toast.show {
+            display: block;
+        }
+
+        .network-warning {
+            font-size: 0.72em;
+            color: #e5a843;
+            margin-top: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 5px;
+            line-height: 1.4;
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 30px 20px;
+                padding: 32px 24px;
             }
-            
+
             h1 {
-                font-size: 1.8em;
-            }
-            
-            .payment-btn {
-                padding: 12px 25px;
-                font-size: 1em;
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="avatar">👤</div>
         <h1>Pay Shahriar</h1>
-        <p class="subtitle">Quick and easy payment options</p>
-        
+        <p class="subtitle">Choose a payment method below</p>
+
         <div class="payment-buttons">
             <a href="https://paypal.me/zhahriar" target="_blank" class="payment-btn paypal-btn">
-                <span class="icon">💳</span>
+                <span class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 4.643-5.813 4.643h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.287-1.798.287-1.798a.923.923 0 0 1 .912-.788h.574c3.724 0 6.636-1.513 7.485-5.888.358-1.832.173-3.365-.881-4.261z"/>
+                    </svg>
+                </span>
                 PayPal
             </a>
-            
+
             <a href="https://buymeacoffee.com/xrtw5yqdy" target="_blank" class="payment-btn coffee-btn">
-                <span class="icon">💸</span>
+                <span class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>
+                    </svg>
+                </span>
                 Buy Me a Coffee
             </a>
+
+            <div class="divider">or crypto</div>
+
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-title">
+                        <span>₿ Bitcoin</span>
+                    </div>
+                    <span class="crypto-badge">Base network</span>
+                </div>
+                <div class="crypto-address-wrap">
+                    <div class="crypto-address" id="btc-address">0x86f37De8d7aE4ffB529557c181A63d1f33d9D6ff</div>
+                    <button class="copy-btn" onclick="copyAddress()" title="Copy address">⧉</button>
+                </div>
+                <div class="copy-toast" id="copy-toast">✓ Copied to clipboard</div>
+            </div>
         </div>
     </div>
+
+    <script>
+        function copyAddress() {
+            const addr = document.getElementById('btc-address').innerText;
+            navigator.clipboard.writeText(addr).then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            });
+        }
+    </script>
 </body>
 </html>
