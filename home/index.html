@@ -733,65 +733,30 @@
           return;
         }
 
-        // Use cache if still fresh
+        // Resolve "lab" hostname to IP for health checks
+        const checkUrl = url.replace("http://lab", "http://192.168.0.93");
+
+        // Use cache if still fresh (keyed on original url)
         const cached = getCachedStatus(url);
         if (cached) {
           applyDot(dot, cached);
           return;
         }
 
-        fetch(url, {
+        fetch(checkUrl, {
           mode: "no-cors",
           cache: "no-cache",
           credentials: "omit",
           signal: AbortSignal.timeout(8000),
         })
-          .then((res) => {
-            // opaque response (no-cors) has status 0 but still resolves = server reachable
+          .then(() => {
             applyDot(dot, "up");
             setStatusCache(url, "up");
           })
           .catch(() => {
-            // Try img-based fallback for private network hosts (avoids mixed-content blocks)
-            pingWithImg(url, dot);
+            applyDot(dot, "down");
+            setStatusCache(url, "down");
           });
-      }
-
-      function pingWithImg(url, dot) {
-        const img = new Image();
-        const start = Date.now();
-        let settled = false;
-
-        const timer = setTimeout(() => {
-          if (settled) return;
-          settled = true;
-          img.src = "";
-          applyDot(dot, "down");
-          setStatusCache(url, "down");
-        }, 8000);
-
-        img.onload = () => {
-          if (settled) return;
-          settled = true;
-          clearTimeout(timer);
-          applyDot(dot, "up");
-          setStatusCache(url, "up");
-        };
-
-        img.onerror = () => {
-          if (settled) return;
-          settled = true;
-          clearTimeout(timer);
-          const elapsed = Date.now() - start;
-          // If the server responded quickly (even with non-image), it's up.
-          // A truly unreachable host either times out or fails near-instantly.
-          const status = elapsed > 50 ? "up" : "down";
-          applyDot(dot, status);
-          setStatusCache(url, status);
-        };
-
-        const base = url.replace(/\/$/, "");
-        img.src = base + "/favicon.ico?" + Date.now();
       }
 
       function scheduleHealthChecks() {
@@ -845,6 +810,6 @@
       }, 5000);
     </script>
     <!-- Update version after modifications: vYYYYMMDD.HHMM -->
-    <div class="version">v20260219.1310</div>
+    <div class="version">v20260219.1330</div>
   </body>
 </html>
