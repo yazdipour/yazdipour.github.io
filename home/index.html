@@ -735,16 +735,55 @@
         fetch(url, {
           mode: "no-cors",
           cache: "no-cache",
+          credentials: "omit",
           signal: AbortSignal.timeout(8000),
         })
-          .then(() => {
+          .then((res) => {
+            // opaque response (no-cors) has status 0 but still resolves = server reachable
             applyDot(dot, "up");
             setStatusCache(url, "up");
           })
           .catch(() => {
-            applyDot(dot, "down");
-            setStatusCache(url, "down");
+            // Try img-based fallback for private network hosts (avoids mixed-content blocks)
+            pingWithImg(url, dot);
           });
+      }
+
+      function pingWithImg(url, dot) {
+        const img = new Image();
+        const start = Date.now();
+        let settled = false;
+
+        const timer = setTimeout(() => {
+          if (settled) return;
+          settled = true;
+          img.src = "";
+          applyDot(dot, "down");
+          setStatusCache(url, "down");
+        }, 8000);
+
+        img.onload = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          applyDot(dot, "up");
+          setStatusCache(url, "up");
+        };
+
+        img.onerror = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          const elapsed = Date.now() - start;
+          // If the server responded quickly (even with non-image), it's up.
+          // A truly unreachable host either times out or fails near-instantly.
+          const status = elapsed > 50 ? "up" : "down";
+          applyDot(dot, status);
+          setStatusCache(url, status);
+        };
+
+        const base = url.replace(/\/$/, "");
+        img.src = base + "/favicon.ico?" + Date.now();
       }
 
       function scheduleHealthChecks() {
