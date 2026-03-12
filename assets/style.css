@@ -7,6 +7,7 @@
         url("Graphik-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: "Semibold";
@@ -17,6 +18,7 @@
         url("Graphik-Semibold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: "Medium";
@@ -27,6 +29,7 @@
         url("Graphik-Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 html,
@@ -117,15 +120,6 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
-html,
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-}
 
 html {
     /* background-color: var(--bg-primary); */
@@ -136,12 +130,12 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    /* background: var(--bg-primary); */
-    color: var(--text-primary);
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    padding: 0;
     margin: 0;
+    font-size: 16px;
 }
 
 ::selection {
@@ -298,28 +292,18 @@ a:visited {
     box-sizing: border-box;
 }
 
-html,
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-size: 16px;
-}
 
 html {
     background-image: url(bg.png);
     background-size: 74vh;
     background-repeat: repeat-x;
-    background-color: var(--bg-primary);
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--text-primary);
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-size: 16px;
 }
 
 ::selection {
