@@ -14,7 +14,7 @@
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
-        max-width: 800px;
+        max-width: 760px;
         margin: 0 auto;
         padding: 40px 20px;
         background: #111111;
@@ -171,7 +171,7 @@
       }
       .bookmarks .service-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 14px;
         margin-bottom: 20px;
       }
@@ -371,15 +371,21 @@
             color: "#ff0000",
           },
           {
-            name: "Subscriptions",
+            name: "Subs",
             url: "https://www.youtube.com/feed/subscriptions",
-            icon: "simple-icons:youtube",
             color: "#ff0000",
+            icon: "mdi:youtube-subscription",
           },
           {
             name: "Playlist",
             url: "https://www.youtube.com/feed/playlists",
-            icon: "simple-icons:youtube",
+            color: "#ff0000",
+            icon: "mdi:playlist-play",
+          },
+          {
+            name: "Music",
+            url: "https://music.youtube.com/",
+            icon: "mdi:playlist-music",
             color: "#ff0000",
           },
         ],
