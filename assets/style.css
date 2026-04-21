@@ -1,33 +1,14 @@
 @font-face {
     font-family: "Regular";
-    src: url("Graphik-Regular.eot");
-    src:
-        url("Graphik-Regular.eot#iefix") format("embedded-opentype"),
-        url("Graphik-Regular.woff") format("woff"),
-        url("Graphik-Regular.ttf") format("truetype");
+    src: url("Graphik-Regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Semibold";
-    src: url("Graphik-Semibold.eot");
-    src:
-        url("Graphik-Semibold.eot#iefix") format("embedded-opentype"),
-        url("Graphik-Semibold.woff") format("woff"),
-        url("Graphik-Semibold.ttf") format("truetype");
+    src: url("Graphik-Semibold.woff") format("woff");
     font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "Medium";
-    src: url("Graphik-Medium.eot");
-    src:
-        url("Graphik-Medium.eot#iefix") format("embedded-opentype"),
-        url("Graphik-Medium.woff") format("woff"),
-        url("Graphik-Medium.ttf") format("truetype");
-    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
@@ -181,7 +162,7 @@ h1 {
 }
 
 p.large {
-    font-family: "Medium";
+    font-family: "Regular";
     font-size: 2vw;
     font-size: 1.6em;
     color: #111111;

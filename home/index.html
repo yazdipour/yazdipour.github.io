@@ -474,8 +474,26 @@
         todos.forEach((todo, i) => {
           const li = document.createElement("li");
           const isLink = /^https?:\/\//i.test(todo);
-          const content = isLink ? `<a href="${todo}">${todo}</a>` : todo;
-          li.innerHTML = `<span>${content}</span><button onclick="removeTodo(${i})">×</button>`;
+          const content = document.createElement(isLink ? "a" : "span");
+          if (isLink) {
+            content.href = todo;
+            content.textContent = todo;
+            content.rel = "noopener noreferrer";
+            content.target = "_blank";
+          } else {
+            content.textContent = todo;
+          }
+
+          const textWrap = document.createElement("span");
+          textWrap.appendChild(content);
+
+          const removeButton = document.createElement("button");
+          removeButton.type = "button";
+          removeButton.textContent = "×";
+          removeButton.addEventListener("click", () => removeTodo(i));
+
+          li.appendChild(textWrap);
+          li.appendChild(removeButton);
           list.appendChild(li);
         });
       }
@@ -497,7 +515,7 @@
         loadTodos();
       }
 
-      input.addEventListener("keypress", (e) => e.key === "Enter" && addTodo());
+      input.addEventListener("keydown", (e) => e.key === "Enter" && addTodo());
 
       // Initialize
       loadTodos();
