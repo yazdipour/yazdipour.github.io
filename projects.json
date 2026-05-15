@@ -49,18 +49,20 @@
         "year": 2024
     },
     {
-        "title": "multiboard mouse holder mount",
+        "title": "multiboard mouse holder mount 3D Model",
         "content": "Multiboard mouse holder mount for Razer and Logitech mice.",
         "url": "https://makerworld.com/en/models/2577004-multiboard-mouse-holder-mount-razer-logitech#profileId-2841751",
         "icon": "mdi:printer-3d",
-        "year": 2026
+        "year": 2026,
+        "color": "#00c000"
     },
     {
-        "title": "multiboard trmnl mount",
+        "title": "multiboard trmnl mount 3D Model",
         "content": "Multiboard mount for TRMNL.",
         "url": "https://makerworld.com/en/models/2436099-multiboard-trmnl-mount#profileId-2672745",
         "icon": "mdi:printer-3d",
-        "year": 2026
+        "year": 2026,
+        "color": "#00c000"
     },
     {
         "title": "trmnl-telegram",

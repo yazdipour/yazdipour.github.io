@@ -33,6 +33,9 @@ function renderProjects(projects) {
             icon.className = "iconify post-source-icon";
             icon.setAttribute("data-icon", project.icon);
             icon.setAttribute("aria-label", project.source || "Project source");
+            if (project.color) {
+                icon.style.color = project.color;
+            }
             title.append(icon);
         }
 
