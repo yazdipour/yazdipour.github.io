@@ -1,0 +1,86 @@
+[
+    {
+        "title": "karakeep-opds",
+        "content": "Expose Karakeep bookmarks as OPDS feeds.",
+        "url": "https://github.com/yazdipour/karakeep-opds",
+        "icon": "mdi:github",
+        "year": 2026
+    },
+    {
+        "title": "unlimited-ticktick-windows",
+        "content": "Reverse engineered TickTick Windows.",
+        "url": "https://github.com/yazdipour/unlimited-ticktick-windows",
+        "icon": "mdi:github",
+        "year": 2020
+    },
+    {
+        "title": "unlimited-ticktick-macos",
+        "content": "Reverse engineered TickTick macOS.",
+        "url": "https://github.com/yazdipour/unlimited-ticktick-macos",
+        "icon": "mdi:github",
+        "year": 2026
+    },
+    {
+        "title": "TeleStore",
+        "content": "iOS IPA repository store from a Telegram channel.",
+        "url": "https://github.com/yazdipour/TeleStore",
+        "icon": "mdi:github",
+        "year": 2026
+    },
+    {
+        "title": "GithubStore",
+        "content": "iOS IPA repository store from GitHub repositories.",
+        "url": "https://github.com/yazdipour/GithubStore",
+        "icon": "mdi:github",
+        "year": 2026
+    },
+    {
+        "title": "trmnl-telegram",
+        "content": "Telegram to TRMNL bridge for images, PDFs, and EPUB files.",
+        "url": "https://github.com/yazdipour/trmnl-telegram",
+        "icon": "mdi:github",
+        "year": 2025
+    },
+    {
+        "title": "trmnl-beszel",
+        "content": "TRMNL plugin for Beszel server metrics.",
+        "url": "https://github.com/yazdipour/trmnl-beszel",
+        "icon": "mdi:github",
+        "year": 2025
+    },
+    {
+        "title": "text-to-sql",
+        "content": "Text-to-SQL experiments using GPT.",
+        "url": "https://github.com/yazdipour/text-to-sql-gpt",
+        "icon": "mdi:github",
+        "year": 2023
+    },
+    {
+        "title": "xbrain",
+        "content": "Telegram, OpenAI, and read-later workflow for Instapaper, Pocket, and Omnivore.",
+        "url": "https://github.com/yazdipour/xbrain",
+        "icon": "mdi:github",
+        "year": 2023
+    },
+    {
+        "title": "text-to-sparql",
+        "content": "End-to-end fine-tuned T5 model for text-to-SPARQL.",
+        "url": "https://github.com/yazdipour/text-to-sparql",
+        "icon": "mdi:github",
+        "year": 2021
+    },
+    {
+        "title": "pocketx",
+        "content": "UWP Pocket client.",
+        "url": "https://github.com/yazdipour/pocketx",
+        "icon": "mdi:github",
+        "year": 2018
+    },
+    {
+        "title": "csharp-lexical-analyzer",
+        "content": "C# lexical analyzer with a graphical interface.",
+        "url": "https://github.com/yazdipour/csharp-lexical-analyzer",
+        "icon": "mdi:github",
+        "year": 2016
+    }
+]
