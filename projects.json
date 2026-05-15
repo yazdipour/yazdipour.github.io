@@ -35,6 +35,34 @@
         "year": 2026
     },
     {
+        "title": "OmnivoreQL",
+        "content": "GitHub repository for OmnivoreQL.",
+        "url": "https://github.com/yazdipour/OmnivoreQL",
+        "icon": "mdi:github",
+        "year": 2024
+    },
+    {
+        "title": "OmnivoreX",
+        "content": "GitHub repository for OmnivoreX.",
+        "url": "https://github.com/yazdipour/OmnivoreX",
+        "icon": "mdi:github",
+        "year": 2024
+    },
+    {
+        "title": "multiboard mouse holder mount",
+        "content": "Multiboard mouse holder mount for Razer and Logitech mice.",
+        "url": "https://makerworld.com/en/models/2577004-multiboard-mouse-holder-mount-razer-logitech#profileId-2841751",
+        "icon": "mdi:printer-3d",
+        "year": 2026
+    },
+    {
+        "title": "multiboard trmnl mount",
+        "content": "Multiboard mount for TRMNL.",
+        "url": "https://makerworld.com/en/models/2436099-multiboard-trmnl-mount#profileId-2672745",
+        "icon": "mdi:printer-3d",
+        "year": 2026
+    },
+    {
         "title": "trmnl-telegram",
         "content": "Telegram to TRMNL bridge for images, PDFs, and EPUB files.",
         "url": "https://github.com/yazdipour/trmnl-telegram",
@@ -70,11 +98,39 @@
         "year": 2021
     },
     {
+        "title": "robot-path-planning",
+        "content": "Robot Path planning algorithms and implementations.",
+        "url": "https://github.com/yazdipour/pathplanning",
+        "icon": "mdi:github",
+        "year": 2021
+    },
+    {
+        "title": "gdb-buffer-overflow-attack",
+        "content": "GDB buffer overflow attack demonstration.",
+        "url": "https://github.com/yazdipour/gdb-buffer-overflow-attack",
+        "icon": "mdi:github",
+        "year": 2020
+    },
+    {
+        "title": "twitter-graph-analysis-covid19-opinion-leaders",
+        "content": "Twitter graph analysis of COVID-19 opinion leaders.",
+        "url": "https://github.com/yazdipour/twitter-graph-analysis-covid19-opinion-leaders",
+        "icon": "mdi:github",
+        "year": 2020
+    },
+    {
         "title": "pocketx",
         "content": "UWP Pocket client.",
         "url": "https://github.com/yazdipour/pocketx",
         "icon": "mdi:github",
         "year": 2018
+    },
+    {
+        "title": "Data Driven Decision Support to Fund Graduate Studies in Abroad Universities",
+        "content": "Decision support system for funding graduate studies abroad.",
+        "url": "https://github.com/yazdipour/DM17",
+        "icon": "mdi:github",
+        "year": 2017
     },
     {
         "title": "csharp-lexical-analyzer",
