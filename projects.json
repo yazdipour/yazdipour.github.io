@@ -7,15 +7,22 @@
         "year": 2026
     },
     {
+        "title": "github-graphql-access-control-bypass",
+        "content": "GitHub GraphQL access control bypass 1000$ bug bounty.",
+        "url": "https://github.com/yazdipour/github-graphql-access-control-bypass",
+        "icon": "mdi:github",
+        "year": 2020
+    },
+    {
         "title": "unlimited-ticktick-windows",
-        "content": "Reverse engineered TickTick Windows.",
+        "content": "Reverse engineered TickTick Windows with utilization of Github Actions.",
         "url": "https://github.com/yazdipour/unlimited-ticktick-windows",
         "icon": "mdi:github",
         "year": 2020
     },
     {
         "title": "unlimited-ticktick-macos",
-        "content": "Reverse engineered TickTick macOS.",
+        "content": "Reverse engineered TickTick macOS with utilization of Github Actions.",
         "url": "https://github.com/yazdipour/unlimited-ticktick-macos",
         "icon": "mdi:github",
         "year": 2026
