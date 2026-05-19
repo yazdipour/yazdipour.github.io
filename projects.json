@@ -4,6 +4,7 @@
         "content": "Expose Karakeep bookmarks as OPDS feeds.",
         "url": "https://github.com/yazdipour/karakeep-opds",
         "icon": "mdi:github",
+        "tag": "Service",
         "year": 2026
     },
     {
@@ -11,6 +12,7 @@
         "content": "GitHub GraphQL access control bypass 1000$ bug bounty.",
         "url": "https://github.com/yazdipour/github-graphql-access-control-bypass",
         "icon": "mdi:github",
+        "tag": "Security",
         "year": 2020
     },
     {
@@ -18,6 +20,7 @@
         "content": "Reverse engineered TickTick Windows with utilization of Github Actions.",
         "url": "https://github.com/yazdipour/unlimited-ticktick-windows",
         "icon": "mdi:github",
+        "tag": "Windows-RCE",
         "year": 2020
     },
     {
@@ -25,13 +28,15 @@
         "content": "Reverse engineered TickTick macOS with utilization of Github Actions.",
         "url": "https://github.com/yazdipour/unlimited-ticktick-macos",
         "icon": "mdi:github",
+        "tag": "MacOS-RCE",
         "year": 2026
     },
     {
         "title": "TeleStore",
-        "content": "iOS IPA repository store from a Telegram channel.",
+        "content": "iOS IPA repository store from Telegram channels.",
         "url": "https://github.com/yazdipour/TeleStore",
         "icon": "mdi:github",
+        "tag": "iOS-Store",
         "year": 2026
     },
     {
@@ -39,20 +44,23 @@
         "content": "iOS IPA repository store from GitHub repositories.",
         "url": "https://github.com/yazdipour/GithubStore",
         "icon": "mdi:github",
+        "tag": "iOS-Store",
         "year": 2026
     },
     {
         "title": "OmnivoreQL",
-        "content": "GitHub repository for OmnivoreQL.",
+        "content": "@omnivore-app API client for Python",
         "url": "https://github.com/yazdipour/OmnivoreQL",
         "icon": "mdi:github",
+        "tag": "Python-Library",
         "year": 2024
     },
     {
         "title": "OmnivoreX",
-        "content": "GitHub repository for OmnivoreX.",
+        "content": "Omnivore TUI Terminal Client [Windows - MacOS - Linux]",
         "url": "https://github.com/yazdipour/OmnivoreX",
         "icon": "mdi:github",
+        "tag": "CLI-App",
         "year": 2024
     },
     {
@@ -61,14 +69,16 @@
         "url": "https://makerworld.com/en/models/2577004-multiboard-mouse-holder-mount-razer-logitech#profileId-2841751",
         "icon": "mdi:printer-3d",
         "year": 2026,
+        "tag": "3D-Modeling",
         "color": "#00c000"
     },
     {
         "title": "multiboard trmnl mount 3D Model",
-        "content": "Multiboard mount for TRMNL.",
+        "content": "Multiboard mount for TRMNL E-ink display.",
         "url": "https://makerworld.com/en/models/2436099-multiboard-trmnl-mount#profileId-2672745",
         "icon": "mdi:printer-3d",
         "year": 2026,
+        "tag": "3D-Modeling",
         "color": "#00c000"
     },
     {
@@ -76,6 +86,7 @@
         "content": "Telegram to TRMNL bridge for images, PDFs, and EPUB files.",
         "url": "https://github.com/yazdipour/trmnl-telegram",
         "icon": "mdi:github",
+        "tag": "Server-bridge-eink",
         "year": 2025
     },
     {
@@ -83,20 +94,23 @@
         "content": "TRMNL plugin for Beszel server metrics.",
         "url": "https://github.com/yazdipour/trmnl-beszel",
         "icon": "mdi:github",
+        "tag": "hackathon",
         "year": 2025
     },
     {
         "title": "text-to-sql",
-        "content": "Text-to-SQL experiments using GPT.",
+        "content": "State of the art Text-to-SQL using PICARD and GPT.",
         "url": "https://github.com/yazdipour/text-to-sql-gpt",
         "icon": "mdi:github",
+        "tag": "LLMs",
         "year": 2023
     },
     {
         "title": "xbrain",
-        "content": "Telegram, OpenAI, and read-later workflow for Instapaper, Pocket, and Omnivore.",
+        "content": "Telegram, OpenAI to Read-later app workflow.",
         "url": "https://github.com/yazdipour/xbrain",
         "icon": "mdi:github",
+        "tag": "AI-Workflow",
         "year": 2023
     },
     {
@@ -104,6 +118,7 @@
         "content": "End-to-end fine-tuned T5 model for text-to-SPARQL.",
         "url": "https://github.com/yazdipour/text-to-sparql",
         "icon": "mdi:github",
+        "tag": "AI-Model",
         "year": 2021
     },
     {
@@ -111,6 +126,7 @@
         "content": "Robot Path planning algorithms and implementations.",
         "url": "https://github.com/yazdipour/pathplanning",
         "icon": "mdi:github",
+        "tag": "Algorithms",
         "year": 2021
     },
     {
@@ -118,6 +134,7 @@
         "content": "GDB buffer overflow attack demonstration.",
         "url": "https://github.com/yazdipour/gdb-buffer-overflow-attack",
         "icon": "mdi:github",
+        "tag": "Security",
         "year": 2020
     },
     {
@@ -125,6 +142,7 @@
         "content": "Twitter graph analysis of COVID-19 opinion leaders.",
         "url": "https://github.com/yazdipour/twitter-graph-analysis-covid19-opinion-leaders",
         "icon": "mdi:github",
+        "tag": "Network-Analysis",
         "year": 2020
     },
     {
@@ -132,13 +150,15 @@
         "content": "UWP Pocket client.",
         "url": "https://github.com/yazdipour/pocketx",
         "icon": "mdi:github",
+        "tag": "CSharp-Windows-App",
         "year": 2018
     },
     {
-        "title": "Data Driven Decision Support to Fund Graduate Studies in Abroad Universities",
+        "title": "recommendation-system-for-funding-graduate-studies-abroad",
         "content": "Decision support system for funding graduate studies abroad.",
         "url": "https://github.com/yazdipour/DM17",
         "icon": "mdi:github",
+        "tag": "Data-Mining",
         "year": 2017
     },
     {
@@ -146,6 +166,7 @@
         "content": "C# lexical analyzer with a graphical interface.",
         "url": "https://github.com/yazdipour/csharp-lexical-analyzer",
         "icon": "mdi:github",
+        "tag": "Compiler",
         "year": 2016
     }
 ]

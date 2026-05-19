@@ -53,11 +53,23 @@ function renderProjects(projects) {
 
         content.append(header);
 
-        if (project.content) {
+        if (project.content || project.tag) {
+            const bodyRow = document.createElement("span");
+            bodyRow.className = "post-body";
+
             const body = document.createElement("span");
             body.className = "post-text";
-            body.textContent = project.content;
-            content.append(body);
+            body.textContent = project.content || "";
+            bodyRow.append(body);
+
+            if (project.tag) {
+                const tag = document.createElement("span");
+                tag.className = "post-tag";
+                tag.textContent = `#${String(project.tag).replace(/^#/, "")}`;
+                bodyRow.append(tag);
+            }
+
+            content.append(bodyRow);
         }
 
         card.append(content);
