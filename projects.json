@@ -9,11 +9,19 @@
     },
     {
         "title": "github-graphql-access-control-bypass",
-        "content": "GitHub GraphQL access control bypass 1000$ bug bounty.",
+        "content": "GitHub GraphQL access control bypass 1000$ HackerOne Bug Bounty.",
         "url": "https://github.com/yazdipour/github-graphql-access-control-bypass",
         "icon": "mdi:github",
         "tag": "Security",
         "year": 2020
+    },
+    {
+        "title": "ReadFIT-Mod",
+        "content": "Reverse engineered ReadFIT iOS app, via memory patching and API swizzling with dylib injection.",
+        "url": "https://github.com/yazdipour/ReadFIT-Mod",
+        "icon": "mdi:github",
+        "tag": "iOS-RCE",
+        "year": 2026
     },
     {
         "title": "unlimited-ticktick-windows",
@@ -83,7 +91,7 @@
     },
     {
         "title": "trmnl-telegram",
-        "content": "Telegram to TRMNL bridge for images, PDFs, and EPUB files.",
+        "content": "Server and Plugin for Telegram-TRMNL bridge for images, PDFs, and EPUB sharing.",
         "url": "https://github.com/yazdipour/trmnl-telegram",
         "icon": "mdi:github",
         "tag": "Server-bridge-eink",
@@ -147,7 +155,7 @@
     },
     {
         "title": "pocketx",
-        "content": "UWP Pocket client.",
+        "content": "Pocket Read-Later Windows UWP client with Cache and Sync features.",
         "url": "https://github.com/yazdipour/pocketx",
         "icon": "mdi:github",
         "tag": "CSharp-Windows-App",
@@ -155,7 +163,7 @@
     },
     {
         "title": "recommendation-system-for-funding-graduate-studies-abroad",
-        "content": "Decision support system for funding graduate studies abroad.",
+        "content": "Decision support system for funding graduate studies abroad, from data collection to model evaluation.",
         "url": "https://github.com/yazdipour/DM17",
         "icon": "mdi:github",
         "tag": "Data-Mining",
