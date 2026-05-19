@@ -1,7 +1,7 @@
 [
     {
         "title": "karakeep-opds",
-        "content": "Expose Karakeep bookmarks as OPDS feeds.",
+        "content": "Expose Karakeep bookmarks as OPDS feeds (Useful for E-Readers).",
         "url": "https://github.com/yazdipour/karakeep-opds",
         "icon": "mdi:github",
         "tag": "Service",
@@ -73,7 +73,7 @@
     },
     {
         "title": "multiboard mouse holder mount 3D Model",
-        "content": "Multiboard mouse holder mount for Razer and Logitech mice.",
+        "content": "Multiboard mouse holder mount for Razer Viper 3 Pro and Logitech Vertical Mouse.",
         "url": "https://makerworld.com/en/models/2577004-multiboard-mouse-holder-mount-razer-logitech#profileId-2841751",
         "icon": "mdi:printer-3d",
         "year": 2026,
