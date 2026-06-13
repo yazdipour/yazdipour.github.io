@@ -1,5 +1,13 @@
 [
     {
+        "title": "CrossXT",
+        "content": "Fork of Crosspoint project to render TRMNL on XTeink e-ink devices",
+        "url": "https://www.linkedin.com/posts/yazdipour_its-amazing-how-cheap-and-efficient-esp32-ugcPost-7464997296297041920-h2tP/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAo_0cUBdfRjaaOpWhyOS1_dgYrjgTjBhzk",
+        "icon": "mdi:linkedin",
+        "tag": "C",
+        "year": 2026
+    },
+    {
         "title": "karakeep-opds",
         "content": "Expose Karakeep bookmarks as OPDS feeds (Useful for E-Readers).",
         "url": "https://github.com/yazdipour/karakeep-opds",
