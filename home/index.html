@@ -271,6 +271,37 @@
         border-color: rgba(239, 68, 68, 0.3);
         color: #fca5a5;
       }
+      .bookmarks .app-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 20px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+      }
+      .bookmarks .app-icon {
+        display: flex;
+        text-decoration: none;
+      }
+      .bookmarks .app-icon .tile {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+      .bookmarks .app-icon:hover .tile {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
       @media (max-width: 640px) {
         .bookmarks .service-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -357,10 +388,10 @@
             color: "#5865f2",
           },
           {
-            name: "BrowseryTools",
-            url: "https://browserytools.com/",
-            icon: "mdi:tools",
-            color: "#ffffff",
+            name: "Reddit",
+            url: "https://reddit.com/",
+            icon: "mdi:reddit",
+            color: "orange",
           },
         ],
         Media: [
@@ -385,25 +416,46 @@
         ],
         Services: [
           {
+            name: "HOME",
+            url: "http://lab:8787/",
+            icon: "mdi:home",
+            color: "#eee",
+          },
+          {
             name: "Karakeep",
             url: "http://lab:3000/",
             icon: "mdi:bookmark",
             color: "#eee",
           },
           {
-            name: "ownCloud",
-            url: "http://lab:8888/",
-            icon: "simple-icons:owncloud",
-            color: "#eee",
+            name: "NextExplorer",
+            url: "http://lab:9999/",
+            icon: "mdi:folder",
+            color: "orange",
           },
           {
-            name: "CTRL PANEL",
-            url: "http://lab:8787/",
-            icon: "mdi:server",
-            color: "#eee",
+            name: "Grafana",
+            url: "http://lab:3300/",
+            icon: "simple-icons:grafana",
+            color: "#e5492b",
+          },
+          {
+            name: "BookOrbit",
+            url: "http://lab:6060/",
+            icon: "simple-icons:gitbook",
+            color: "#2196f3",
+          },
+          {
+            name: "OmniRoute",
+            url: "http://lab:20130/",
+            icon: "simple-icons:openrouter",
+            color: "#ff69b4",
           },
         ],
       };
+
+      // Categories rendered as a row of app-style square icons
+      const appIconCategories = ["Services"];
 
       // Toggle Lab URLs
       function toggleLab() {
@@ -438,6 +490,19 @@
 
         for (const [category, services] of Object.entries(bookmarkServices)) {
           html += `<h3>${category}</h3>`;
+
+          if (appIconCategories.includes(category)) {
+            html += '<div class="app-row">';
+            services.forEach((service) => {
+              html += `
+                <a href="${getServiceUrl(service.url)}" class="app-icon" title="${service.name}" target="_self">
+                  <span class="tile"><span class="iconify" data-icon="${service.icon}" data-width="16" style="color: ${service.color}"></span></span>
+                </a>`;
+            });
+            html += "</div>";
+            continue;
+          }
+
           html += '<div class="service-grid">';
 
           services.forEach((service) => {
@@ -517,6 +582,6 @@
       loadBookmarks();
     </script>
     <!-- Update version after modifications: vYYYYMMDD.HHMM -->
-    <div class="version">v20260315.1200</div>
+    <div class="version">v20261009.1200</div>
   </body>
 </html>
